@@ -27,8 +27,7 @@ app.debug = True
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
-toolbar = DebugToolbarExtension(app)
-
+#toolbar = DebugToolbarExtension(app)
 
 app.register_blueprint(nav_blueprint)
 app.register_blueprint(contact_blueprint)
@@ -37,8 +36,8 @@ app.register_blueprint(contact_blueprint)
 # Create admin
 admin = flask_admin.Admin(
     app,
-    'Example: Auth',
-    base_template='my_master.html',
+    'MyAdminApp',
+    base_template='admin-base.html',
     template_mode='bootstrap3',
 )
 

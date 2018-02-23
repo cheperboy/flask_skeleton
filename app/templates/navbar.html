@@ -1,0 +1,51 @@
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for('nav.home') }}">Navbar</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {{ 'active' if active_page == 'public1' else '' }}">
+            <a class="nav-link" href="{{ url_for('nav.public1') }}">public1</a>
+          </li>
+          <li class="nav-item {{ 'active' if active_page == 'public2' else '' }}">
+            <a class="nav-link" href="{{ url_for('nav.public2') }}">public2</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">page 1</a>
+              <a class="dropdown-item" href="#">page 2</a>
+              <a class="dropdown-item" href="#">page 3</a>
+            </div>
+          </li>
+            {% if current_user.is_authenticated %}
+          <li class="nav-item {{ 'active' if active_page == 'private' else '' }}">
+            <a class="nav-link" href="{{ url_for('nav.private') }}">private</a>
+          </li>
+          <li class="nav-item {{ 'active' if active_page == 'admin' else '' }}">
+            <a class="nav-link" href="{{ url_for('admin.index') }}">Admin</a>
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="navbar-nav justify-content-end">
+            {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('security.logout') }}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('security.login') }}">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('security.register') }}">Register</a>
+          </li>
+          {% endif %}
+        </ul
+      </div>
+</nav>
+
+	
+	
+	
